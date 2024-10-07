@@ -8,9 +8,11 @@ Adding one more commentdjango-admin startproject my_tennis_club
 
 Commands for project - 
 1. Inside this Photographic_Quantification git project, create virtual environment and activate it.
-2. instat Django library by command - py -m pip install Django
-3. Create Django project by command - django-admin startproject my_tennis_club
-4. py manage.py runserver - it will start the Django server
-5. py manage.py startapp users - it will create 'users' application.
+2. **Instat Django library by command -> py -m pip install Django**
+3. **Create Django project by command -> django-admin startproject my_tennis_club**
+4. **py manage.py runserver -> it will start the Django server**
+5. **py manage.py startapp users -> it will create 'users' application.**
+6. Create views.py and urls.py
+7. **default app url(administrative office) -> specific app url(dept. office) -> corresponding views.py**
 
 
