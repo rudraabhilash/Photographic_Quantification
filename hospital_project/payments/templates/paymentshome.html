@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #FF6F20; /* Deep Orange */
+            color: white;
+            padding: 20px 0;
+            display: flex; /* Enable flexbox */
+            align-items: center; /* Center items vertically */
+            padding: 20px; /* Adjust padding */
+        }
+        .home-button {
+            background-color: white;
+            color: #FF6F20; /* Deep Orange */
+            border: 2px solid #FF6F20;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+            margin-right: auto; /* Push the button to the left */
+        }
+        .home-button:hover {
+            background-color: #FF6F20;
+            color: white;
+        }
+        .header-content {
+            flex: 1; /* Allow the title to take available space */
+            text-align: center; /* Center the title */
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #FF6F20; /* Deep Orange */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #e65c13; /* Darker shade on hover */
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="/" class="home-button">Home</a> <!-- Home button added on the left -->
+    <div class="header-content">
+        <h1>Consultancy Fee Payment</h1>
+    </div>
+</header>
+<div class="container">
+    <form id="paymentForm">
+        <div class="form-group">
+            <label for="patientName">Patient Name</label>
+            <input type="text" id="patientName" name="patientName" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount (in USD)</label>
+            <input type="number" id="amount" name="amount" required>
+        </div>
+        <div class="form-group">
+            <label for="paymentMethod">Payment Method</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="">Select Payment Method</option>
+                <option value="creditCard">Credit Card</option>
+                <option value="paypal">PayPal</option>
+            </select>
+        </div>
+        <button type="submit">Pay Now</button>
+    </form>
+    <div class="footer">
+        <p>Secure payment processing powered by our trusted partners.</p>
+    </div>
+</div>
+<script>
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Implement payment processing logic here
+        alert('Payment submitted successfully!');
+    });
+</script>
+</body>
+</html>
