@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Doctors</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #FF6F20; /* Deep Orange */
+            color: white;
+            padding: 20px 0;
+            display: flex; /* Enable flexbox */
+            align-items: center; /* Center items vertically */
+            padding: 20px; /* Adjust padding */
+        }
+        .home-button {
+            background-color: white;
+            color: #FF6F20; /* Deep Orange */
+            border: 2px solid #FF6F20;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+            margin-left: 20px; /* Space from the left edge */
+        }
+        .home-button:hover {
+            background-color: #FF6F20;
+            color: white;
+        }
+        h1 {
+            flex: 1; /* Allow the title to take available space */
+            text-align: center; /* Center the title */
+            margin: 0; /* Remove default margin */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .doctors {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .doctor-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+        .doctor-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .doctor-info {
+            padding: 15px;
+        }
+        .doctor-info h2 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        .doctor-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .contact-info {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="/" class="home-button">Home</a> <!-- Home button added -->
+    <h1>Meet Our Doctors</h1>
+</header>
+<div class="container">
+    <div class="doctors">
+        <div class="doctor-card">
+            <img src="https://www.myhealthhospitals.com/images/doctors/dr-jayanth-reddy.jpg" alt="Dr. John Doe">
+            <div class="doctor-info">
+                <h2>Dr. John Doe</h2>
+                <p>Cardiologist</p>
+                <p>Dr. John Doe is a highly experienced cardiologist with over 15 years of experience in treating heart diseases.</p>
+                <div class="contact-info">Contact: (123) 456-7890</div>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg" alt="Dr. Jane Smith">
+            <div class="doctor-info">
+                <h2>Dr. Jane Smith</h2>
+                <p>Neurologist</p>
+                <p>Dr. Jane Smith specializes in neurological disorders and has been practicing for over 10 years.</p>
+                <div class="contact-info">Contact: (987) 654-3210</div>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <img src="https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=926&fit=clip" alt="Dr. Emily Johnson">
+            <div class="doctor-info">
+                <h2>Dr. Emily Johnson</h2>
+                <p>Pediatrician</p>
+                <p>Dr. Emily Johnson is dedicated to providing the best care for children and has 12 years of experience.</p>
+                <div class="contact-info">Contact: (555) 123-4567</div>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <img src="https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor.jpg?v=1684314843" alt="Dr. Michael Williams">
+            <div class="doctor-info">
+                <h2>Dr. Michael Williams</h2>
+                <p>Orthopedic Surgeon</p>
+                <p>Dr. Michael Williams specializes in orthopedic surgeries and has been in practice for over 20 years.</p>
+                <div class="contact-info">Contact: (444) 777-8888</div>
+            </div>
+        </div>
+        <!-- Add more doctor cards as needed -->
+    </div>
+</div>
+</body>
+</html>
