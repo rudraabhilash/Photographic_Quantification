@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at Our Hospital</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #FF6F20; /* Deep Orange */
+            color: white;
+            padding: 20px 0;
+            display: flex; /* Enable flexbox */
+            align-items: center; /* Center items vertically */
+        }
+        .home-button {
+            background-color: white;
+            color: #FF6F20; /* Deep Orange */
+            border: 2px solid #FF6F20;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+            margin-left: 20px; /* Space between button and the edge */
+        }
+        .home-button:hover {
+            background-color: #FF6F20;
+            color: white;
+        }
+        .header-content {
+            flex: 1; /* Allow the title to take available space */
+            text-align: center; /* Center the title */
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .job-listing {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .job-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            gap: 15px; /* Space between image and text */
+            transition: transform 0.3s;
+        }
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .job-card img {
+            width: 100px; /* Set a fixed width for images */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px;
+        }
+        .job-card h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+        .job-card p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .benefit-card {
+            background: #e7f7e7;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .testimonials {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .testimonial {
+            border-left: 4px solid #FF6F20;
+            padding-left: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px; /* Space between image and text */
+        }
+        .testimonial img {
+            width: 60px; /* Set width for testimonial images */
+            height: 60px; /* Set height for testimonial images */
+            border-radius: 50%; /* Make images circular */
+        }
+        .application-form {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #FF6F20; /* Deep Orange */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #e65c13; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="/" class="home-button">Home</a> <!-- Home button added on the left -->
+    <div class="header-content">
+        <h1>Careers at Our Hospital</h1>
+    </div>
+</header>
+<div class="container">
+    <div class="section">
+        <h2>Current Job Openings</h2>
+        <div class="job-listing">
+            <div class="job-card">
+                <img src="https://via.placeholder.com/100" alt="Registered Nurse">
+                <div>
+                    <h2>Registered Nurse</h2>
+                    <p>Location: City A</p>
+                    <p>Experience: 2+ years</p>
+                    <p>Full-time position in the ICU.</p>
+                </div>
+            </div>
+            <div class="job-card">
+                <img src="https://via.placeholder.com/100" alt="Medical Laboratory Technician">
+                <div>
+                    <h2>Medical Laboratory Technician</h2>
+                    <p>Location: City B</p>
+                    <p>Experience: 1+ years</p>
+                    <p>Full-time position in the lab.</p>
+                </div>
+            </div>
+            <div class="job-card">
+                <img src="https://via.placeholder.com/100" alt="Physiotherapist">
+                <div>
+                    <h2>Physiotherapist</h2>
+                    <p>Location: City C</p>
+                    <p>Experience: 3+ years</p>
+                    <p>Part-time position available.</p>
+                </div>
+            </div>
+            <div class="job-card">
+                <img src="https://via.placeholder.com/100" alt="Administrative Assistant">
+                <div>
+                    <h2>Administrative Assistant</h2>
+                    <p>Location: City D</p>
+                    <p>Experience: 1+ years</p>
+                    <p>Full-time position in the administration department.</p>
+                </div>
+            </div>
+            <!-- Add more job cards as needed -->
+        </div>
+    </div>
+    <div class="section">
+        <h2>Employee Benefits</h2>
+        <div class="benefits">
+            <div class="benefit-card">
+                <h3>Health Insurance</h3>
+                <p>Comprehensive health coverage for employees and their families.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Retirement Plan</h3>
+                <p>401(k) plan with company match to help you save for retirement.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Paid Time Off</h3>
+                <p>Generous PTO policy for vacation and personal time.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Continuing Education</h3>
+                <p>Financial support for professional development and certifications.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Flexible Schedule</h3>
+                <p>Options for flexible working hours to maintain work-life balance.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Wellness Programs</h3>
+                <p>Access to wellness programs and gym memberships.</p>
+            </div>
+        </div>
+    </div>
+    <div class="section testimonials">
+        <h2>What Our Employees Say</h2>
+        <div class="testimonial">
+            <img src="https://via.placeholder.com/60" alt="John Doe">
+            <div>
+                <p><strong>John Doe</strong></p>
+                <p>"Working here has been a life-changing experience. The support from management is incredible!"</p>
+            </div>
+        </div>
+        <div class="testimonial">
+            <img src="https://via.placeholder.com/60" alt="Jane Smith">
+            <div>
+                <p><strong>Jane Smith</strong></p>
+                <p>"I love the team spirit and the commitment to patient care. It feels great to be part of such a dedicated team."</p>
+            </div>
+        </div>
+    </div>
+    <div class="section application-form">
+        <h2>Apply Now</h2>
+        <form id="applicationForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="resume">Upload Resume</label>
+                <input type="file" id="resume" name="resume" accept=".pdf, .doc, .docx" >
+            </div>
+            <div class="form-group">
+                <label for="message">Cover Letter</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById('applicationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Application submitted successfully!');
+        // Implement application submission logic here
+    });
+</script>
+</body>
+</html>

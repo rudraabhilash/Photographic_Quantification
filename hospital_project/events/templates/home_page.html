@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Events</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3; /* Light background */
+            color: #333;
+        }
+        header {
+            background-color: #FF6F20; /* Deep Orange */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex; /* Use Flexbox for layout */
+            justify-content: space-between; /* Spread items across the row */
+            margin: 10px 20%; /* Add some margin to the sides */
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #FFC107; /* Amber */
+        }
+        .hero {
+            background: url('https://pngmagic.com/product_images/solid-dark-orange-background.jpg') no-repeat center center/cover;
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .events, .workshops {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+        }
+        .event, .workshop {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .event:hover, .workshop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        .event img, .workshop img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .event h2, .workshop h2 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .event p, .workshop p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .slider {
+            position: relative;
+            max-width: 1400px; /* Set a max width for the slider */
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .slides {
+            display: flex; /* Use flexbox for horizontal layout */
+            transition: transform 1s ease; /* Smooth transition */
+        }
+        .slide {
+            min-width: 100%; /* Each slide takes full width */
+            box-sizing: border-box;
+        }
+        .slide img {
+            width: 100%; /* Make images responsive */
+            border-radius: 10px;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        footer {
+            background-color: #FF6F20; /* Deep Orange */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Hospital Management system</h1>
+    <nav>
+
+            <a href="#about">About us</a>  
+            <a href="#about">Events</a> 
+            <a href="payments">payments</a>  
+            <a href="doctor">Doctors</a>                
+            <a href="careers">Careers</a>  
+            <a href="#about">Book Appointment</a> 
+    </nav>
+
+</header>
+
+
+
+<div class="slider">
+    <div class="slides">
+
+        <div class="slide">
+            <img src="https://image.cnbcfm.com/api/v1/image/106476411-1586174867088gettyimages-139638427.jpeg?v=1586174919&w=1858&h=1045&vtcrop=y" alt="School Management System" style="width: 100%; max-height: 420px;">
+        </div>
+        <div class="slide">
+            <img src="https://dam.northwell.edu/m/5f373658731eff4f/Drupal-NEWS_LHH-only-nyc-hospital-among-top-one-percent-nationwide-second-consecutive-year.jpg" alt="School Management System" style="width: 100%; max-height: 420px;">
+        </div>
+        <div class="slide">
+            <img src="https://static01.nyt.com/images/2023/08/30/science/00CLI-HOSPITALFOOD/00CLI-HOSPITALFOOD-mediumSquareAt3X.jpg" alt="School Management System" style="width: 100%; max-height: 420px;">
+        </div>
+        <div class="slide">
+            <img src="https://www.hok.com/wp-content/uploads/2019/05/NewYork-Presbyerian-David-Koch-Center-Exterior-1900.jpg" alt="School Management System" style="width: 100%; max-height: 420px;">
+        </div>
+    </div>
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+</div>
+
+<section id="events" class="events">
+    <h2 style="text-align: center; width: 100%; margin-bottom: 20px;">Upcoming Events</h2>
+    <div class="event">
+        <img src="https://qns.com/wp-content/uploads/2024/05/IMG_2255.jpg?w=1200" alt="Health Fair">
+        <h2>Health Fair</h2>
+        <p>Date: March 15, 2024</p>
+        <p>Join us for a day of health screenings, wellness workshops, and fun activities!</p>
+    </div>
+    <div class="event">
+        <img src="https://media.istockphoto.com/id/1383899009/photo/preparation-for-blood-test-with-pretty-young-woman-by-female-doctor-medical-uniform-on-the.jpg?s=612x612&w=0&k=20&c=5g88htwZme0CA77hvKbxQ6nPHUA-7qA8xkt5GOc8omQ=" alt="Blood Donation Camp">
+        <h2>Blood Donation Camp</h2>
+        <p>Date: April 10, 2024</p>
+        <p>Help save lives by donating blood! Every drop counts!</p>
+    </div>
+    <div class="event">
+        <img src="https://media.istockphoto.com/id/692381776/photo/doctor-talking-to-a-family-at-the-hospital.jpg?s=612x612&w=0&k=20&c=cDwVx1sgH6JXQcD0N8ljSxU2389-O0NhufDa6FE9YbY=" alt="Family Health Day">
+        <h2>Family Health Day</h2>
+        <p>Date: May 20, 2024</p>
+        <p>Bring your family for free health check-ups and fun activities!</p>
+    </div>
+</section>
+
+<section id="workshops" class="workshops">
+    <h2 style="text-align: center; width: 100%; margin-bottom: 20px;">Upcoming Workshops</h2>
+    <div class="workshop">
+        <img src="https://media.gettyimages.com/id/1457889029/photo/group-of-food-with-high-content-of-dietary-fiber-arranged-side-by-side.jpg?s=170667a&w=gi&k=20&c=13tnL-6DHA724uP_TZJpyTdHXZz--6bMWXJ-O9eIm5U=" alt="Nutrition Workshop">
+        <h2>Nutrition Workshop</h2>
+        <p>Date: June 5, 2024</p>
+        <p>Learn about healthy eating habits and meal planning.</p>
+    </div>
+    <div class="workshop">
+        <img src="https://media.istockphoto.com/id/1365555907/photo/yes-do-you-want-to-say-something.jpg?s=612x612&w=0&k=20&c=XUop9fwDsQokI7DXVwhwkMGnrrKAIO58w9SSfXpwYMA=" alt="Mental Health Seminar">
+        <h2>Mental Health Seminar</h2>
+        <p>Date: June 15, 2024</p>
+        <p>Join us for discussions on mental health awareness and coping strategies.</p>
+    </div>
+    <div class="workshop">
+        <img src="https://static01.nyt.com/images/2021/07/06/multimedia/07sp-smallbiz-gyms1-print/07sp-smallbiz-gyms1-articleLarge.jpg?quality=75&auto=webp&disable=upscale" alt="Fitness Workshop">
+        <h2>Fitness Workshop</h2>
+        <p>Date: June 25, 2024</p>
+        <p>Get tips on staying active and maintaining a healthy lifestyle.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Hospital Events. All Rights Reserved.</p>
+</footer>
+
+<script>
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        // Wrap around if the index is out of bounds
+        if (index >= totalSlides) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = totalSlides - 1;
+        } else {
+            currentSlide = index;
+        }
+
+        // Move the slides container to show the current slide
+        slides.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+    }
+
+    function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+    }
+
+    // Automatically change slides every 5 seconds
+    setInterval(() => {
+        changeSlide(1);
+    }, 5000);
+
+    // Show the first slide initially
+    showSlide(currentSlide);
+</script>
+
+
+</body>
+</html>

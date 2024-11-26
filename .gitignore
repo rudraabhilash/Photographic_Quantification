@@ -1,0 +1,12 @@
+forhospital/
+hospital_project/careers/__pycache__/
+hospital_project/doctor/__pycache__/
+hospital_project/events/__pycache__/
+hospital_project/hospital_project/__pycache__/
+hospital_project/payments/__pycache__/
+
+
+hospital_project/careers/migrations/__pycache__/
+hospital_project/doctor/migrations/__pycache__/
+hospital_project/events/migrations/__pycache__/
+hospital_project/payments/migrations/__pycache__/

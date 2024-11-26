@@ -1,9 +1,7 @@
 # Photographic_Quantification
-This will take image as input and output the no of items.
+
 We are using Django build a web application
-This is a comment added by Abhilash Rudra
-This is an another comment added by Abhilash Rudra...
-Adding one more commentdjango-admin startproject my_tennis_club
+
 
 
 Commands for project - 
@@ -18,9 +16,5 @@ Commands for project -
 9. Database - create models.py file inside an app and run these two commands at shell(py manage.py shell) to create table! Two commands are as follows- i) py manage.py makemigrations users, ii) py manage.py migrate NOTE - Whenever you change models.py file, you have to run these two commands.
 10. If you want to see sqlstatement of particular migration then please run this command at shell(py manage.py shell) - py manage.py sqlmigrate users 0001
 11. We can do CRUD operation from python shell(py manage.py shell) itself.
-12. 
-
-
-   
 
 
