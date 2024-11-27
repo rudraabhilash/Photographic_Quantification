@@ -79,5 +79,8 @@ Commands for project -
 9. Database - create models.py file inside an app and run these two commands at shell(py manage.py shell) to create table! Two commands are as follows- i) py manage.py makemigrations users, ii) py manage.py migrate NOTE - Whenever you change models.py file, you have to run these two commands.
 10. If you want to see sqlstatement of particular migration then please run this command at shell(py manage.py shell) - py manage.py sqlmigrate users 0001
 11. We can do CRUD operation from python shell(py manage.py shell) itself.
+12. Install sqlite extension to do CRUD operation from extension in a very beautiful way.
+13. Now do read operation via view function.
+14. Now do write operation via view function.
 
 
