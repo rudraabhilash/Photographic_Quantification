@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #2fd63d;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Events data</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Event Name</th>
+        <th>Organizer</th>
+        <th>note</th>
+    </tr>
+    {% for event in edata %}
+    <tr>
+        <td>{{ event.id }}</td>
+        <td>{{ event.eventName }}</td>
+        <td>{{ event.organizer }}</td>
+        <td>{{ event.note }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No users found.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

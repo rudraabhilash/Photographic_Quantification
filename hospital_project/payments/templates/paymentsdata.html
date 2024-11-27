@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #2fd63d;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Payments data</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Remarks</th>
+        <th>Contact</th>
+        <th>email ID</th>
+        <th>Consultation Fee</th>
+    </tr>
+    {% for payment in pdata %}
+    <tr>
+        <td>{{ payment.id }}</td>
+        <td>{{ payment.Name }}</td>
+        <td>{{ payment.Remarks }}</td>
+        <td>{{ payment.contact }}</td>
+        <td>{{ payment.emailID }}</td>
+        <td>{{ payment.consulatationFee }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No users found.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
