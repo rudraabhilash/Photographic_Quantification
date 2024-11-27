@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #2fd63d;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Doctors data</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Doctor Name</th>
+        <th>expertise</th>
+        <th>Contact</th>
+        <th>emailID</th>
+        <th>description</th>
+        <th>department</th>
+        <th>consulatationFee</th>
+    </tr>
+    {% for doctor in ddata %}
+    <tr>
+        <td>{{ doctor.id }}</td>
+        <td>{{ doctor.docName }}</td>
+        <td>{{ doctor.expertise }}</td>
+        <td>{{ doctor.contact }}</td>
+        <td>{{ doctor.emailID }}</td>
+        <td>{{ doctor.description }}</td>
+        <td>{{ doctor.department }}</td>
+        <td>{{ doctor.consulatationFee }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No users found.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
