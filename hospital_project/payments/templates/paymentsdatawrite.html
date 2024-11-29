@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PAYMENTS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            background: linear-gradient(to bottom, #000000, #333333); /* Gradient background */
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #2b2a26; /* Form background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: white; /* White text color */
+        }
+        .form-heading {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white; /* White color for the heading */
+        }
+        .form-group label {
+            color: white; /* White label color */
+        }
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #4f5f76; /* Light grey border */
+            padding: 10px;
+            color: white; /* White text color in the form controls */
+            background-color: #333333; /* Dark background for the form controls */
+        }
+        .btn-primary {
+            background-color: green; /* Green button background */
+            border-color: green;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0c00b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-heading">Payments</h2>
+
+        <form method="post" action="{% url 'paymentsdatawrite' %}">
+            <div class="form-group">
+                <label for="Name">Name: </label>
+                <input type="text" id="Name" name="Name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="Remarks">Remarks : </label>
+                <input type="text" id="Remarks" name="Remarks" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">contact</label>
+                <input type="number" id="contact" name="contact" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="emailID">emailID</label>
+                <input type="text" id="emailID" name="emailID" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="consulatationFee">consulatationFee</label>
+                <input type="number" id="consulatationFee" name="consulatationFee" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" onclick="myFunction()">Save</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function myFunction() {
+      alert("Your payment was recorded! Thank you!");
+    }
+    </script>
+</body>
+</html>
