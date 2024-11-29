@@ -85,16 +85,20 @@ Commands for project -
 
 15. Deployment steps -
 	a. py -m pip freeze > requirements.txt
+
 	b. Create .ebextensions folder and django.config file inside this folder.
 	      option_settings:aws:elasticbeanstalk:container:python:
 	      WSGIPath:hospital_project.wsgi:application
-	
+
+ 
 	c. Change allowed hosts to ['*'] in default settings.py file in default app
-	d. Make zip file of all apps including default app and manage.py and requirements.txt file
-	e. Use AWS elastic beanstalk - 
+
+ 	d. Make zip file of all apps including default app and manage.py and requirements.txt file
+	
+ 	e. Use AWS elastic beanstalk - 
 	            Application name - hospital_project
 	            Platform - Python
 	            Application code - Upload your code
 	            Source code origin - Local file
-	            Click on create application(Do change GP3 first! This is Oct24 change by aws team. It is there inside Configuration option of environment and inside                  "Instance traffic and scaling" option, you have to select Root volume type - general purpose 3(SSD))
+	            Click on create application(Do change GP3 first! This is Oct24 change by aws team. It is there inside Configuration option of environment and 		    inside "Instance traffic and scaling" option, you have to select Root volume type - general purpose 3(SSD))
 
