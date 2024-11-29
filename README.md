@@ -97,8 +97,12 @@ Commands for project -
 	
  	e. Use AWS elastic beanstalk - 
 	            Application name - hospital_project
+    
 	            Platform - Python
+
 	            Application code - Upload your code
-	            Source code origin - Local file
-	            Click on create application(Do change GP3 first! This is Oct24 change by aws team. It is there inside Configuration option of environment and 		    inside "Instance traffic and scaling" option, you have to select Root volume type - general purpose 3(SSD))
+
+                    Source code origin - Local file
+
+    	            Click on create application(Do change GP3 first! This is Oct24 change by aws team. It is there inside Configuration option of environment and 		    inside "Instance traffic and scaling" option, you have to select Root volume type - general purpose 3(SSD))
 
