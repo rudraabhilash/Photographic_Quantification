@@ -28,4 +28,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python ../../hospital_project/manage.py test
+        python hospital_project/manage.py test
