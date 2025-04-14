@@ -119,6 +119,8 @@ https://gist.github.com/tykurtz/3548a31f673588c05c89f9ca42067bc4
 
 https://github.com/navidre/new_grokking_to_leetcode
 
+https://leetcode.com/discuss/post/3972722/top-greedy-questions-helpful-for-oa-and-17zbd/ - greedy
+
 https://realpython.com/tutorials/django/ - Django 
 
 
@@ -131,6 +133,61 @@ https://github.com/karanpratapsingh/system-design?tab=readme-ov-file#whatsapp
 https://github.com/topics/system-design-interview
 
 https://medium.com/javarevisited/10-best-github-repositories-to-prepare-for-system-design-interviews-6cc9d37d50f6
+
+
+AI, ML - 
+
+https://www.w3schools.com/python/python_ml_getting_started.asp
+
+https://www.kaggle.com/code/kanncaa1/machine-learning-tutorial-for-beginners/notebook
+
+https://www.kaggle.com/code/kanncaa1/data-sciencetutorial-for-beginners
+
+https://www.kaggle.com/code/kanncaa1/machine-learning-tutorial-for-beginners/notebook
+
+https://www.kaggle.com/code/kanncaa1/statistical-learning-tutorial-for-beginners?scriptVersionId=5598734
+
+https://www.kaggle.com/code/kanncaa1/deep-learning-tutorial-for-beginners
+
+https://www.kaggle.com/learn
+
+https://www.kaggle.com/learn/intro-to-machine-learning
+
+https://www.kaggle.com/learn-guide/5-day-genai
+
+http://neuralnetworksanddeeplearning.com/index.html
+
+https://www.3blue1brown.com/topics/neural-networks
+
+https://github.com/donnemartin/data-science-ipython-notebooks/blob/master/kaggle/titanic.ipynb
+
+https://github.com/browser-use/browser-use
+
+https://huggingface.co/vasista22/whisper-hindi-small
+
+https://medium.com/@kharatmoljagdish/using-openai-whisper-python-library-for-speech-to-text-dda4f558fccc
+
+https://www.kaggle.com/code/harshgupta2003/openai-whisper-automated-speech-recognition-hindi
+
+https://www.datacamp.com/blog/top-ai-frameworks-and-libraries
+
+https://www.youtube.com/watch?v=wjZofJX0v4M&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=10
+
+https://huggingface.co/learn
+
+https://huggingface.co/learn/audio-course/chapter0/introduction
+
+https://huggingface.co/blog?p=0
+
+https://www.youtube.com/live/iLVyYDbdSmM
+
+https://www.datacamp.com/tutorial/mistral-7b-tutorial
+
+https://www.datacamp.com/blog/best-open-source-text-to-speech-tts-engines
+
+
+
+
 
 
 
