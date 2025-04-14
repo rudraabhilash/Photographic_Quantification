@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/27929e59-6f02-406b-b1af-a198b9f4ad64)
+![image](https://github.com/user-attachments/assets/d134424e-51d5-4f01-a4b1-d7b5f82a3f20)![image](https://github.com/user-attachments/assets/27929e59-6f02-406b-b1af-a198b9f4ad64)
 
 
 
@@ -105,4 +105,32 @@ Commands for project -
                     Source code origin - Local file
 
     	            Click on create application(Do change GP3 first! This is Oct24 change by aws team. It is there inside Configuration option of environment and    inside "Instance traffic and scaling" option, you have to select Root volume type - general purpose 3(SSD))
+
+
+DSA - 
+
+https://github.com/dipjul/Grokking-the-Coding-Interview-Patterns-for-Coding-Questions
+
+https://www.educative.io/blog/array-interview-questions - Array
+
+https://www.educative.io/courses/grokking-coding-interview/solution-generate-parentheses - DP
+
+https://gist.github.com/tykurtz/3548a31f673588c05c89f9ca42067bc4
+
+https://github.com/navidre/new_grokking_to_leetcode
+
+https://realpython.com/tutorials/django/ - Django 
+
+
+
+System design - 
+https://github.com/ByteByteGoHq/system-design-101?tab=readme-ov-file
+
+https://github.com/karanpratapsingh/system-design?tab=readme-ov-file#whatsapp
+
+https://github.com/topics/system-design-interview
+
+https://medium.com/javarevisited/10-best-github-repositories-to-prepare-for-system-design-interviews-6cc9d37d50f6
+
+
 
