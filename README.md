@@ -93,7 +93,7 @@ Commands for project -
  
 	c. Change allowed hosts to ['*'] in default settings.py file in default app
 
- 	d. Make zip file of all apps including default app and manage.py and requirements.txt file
+ 	d. Make zip file of all apps including default app and manage.py and requirements.txt file(Include db.sqlite3 only for first time for obviously reasons)
 	
  	e. Use AWS elastic beanstalk - 
 	            Application name - hospital_project
