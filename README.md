@@ -126,6 +126,9 @@ https://realpython.com/tutorials/django/ - Django
 
 
 System design - 
+
+https://medium.com/javarevisited/10-best-github-repositories-to-prepare-for-system-design-interviews-6cc9d37d50f6
+
 https://github.com/ByteByteGoHq/system-design-101?tab=readme-ov-file
 
 https://github.com/karanpratapsingh/system-design?tab=readme-ov-file#whatsapp
@@ -134,6 +137,11 @@ https://github.com/topics/system-design-interview
 
 https://medium.com/javarevisited/10-best-github-repositories-to-prepare-for-system-design-interviews-6cc9d37d50f6
 
+https://refactoring.guru/design-patterns/catalog
+
+https://medium.com/@saygiligozde/design-patterns-in-java-5251032ca244 - Java
+
+https://github.com/iluwatar/java-design-patterns/tree/master/factory
 
 AI, ML - 
 
