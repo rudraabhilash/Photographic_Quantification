@@ -141,6 +141,8 @@ https://refactoring.guru/design-patterns/catalog
 
 https://medium.com/@saygiligozde/design-patterns-in-java-5251032ca244 - Java
 
+https://github.com/kanmaytacker/design-patterns - Java
+
 https://github.com/iluwatar/java-design-patterns/tree/master/factory
 
 AI, ML - 
