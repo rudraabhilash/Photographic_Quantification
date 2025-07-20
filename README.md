@@ -195,7 +195,7 @@ https://www.datacamp.com/tutorial/mistral-7b-tutorial
 
 https://www.datacamp.com/blog/best-open-source-text-to-speech-tts-engines
 
-
+https://github.com/FraManl/DataCamp/blob/main/Introduction%20to%20Regression%20with%20statsmodels%20in%20Python.ipynb  - linear regression
 
 
 
