@@ -417,3 +417,35 @@ asyncio.run(main())
 # VWAP is:
 # Extremely light on math
 # Extremely heavy on memory
+
+
+
+
+# Given a stream of (timestamp, price) updates for a financial instrument, compute the Time-Weighted Average Price (TWAP) 
+# over the observed time window, without storing the entire price history.
+
+class TWAP:
+    def __init__(self):
+        self.price_time = 0.0
+        self.total_time = 0.0
+        self.last_price = None
+        self.last_ts = None
+
+    def update(self, ts, price):
+        if self.last_ts is not None:
+            dt = ts - self.last_ts
+            self.price_time += self.last_price * dt
+            self.total_time += dt
+        self.last_price = price
+        self.last_ts = ts
+
+    def get(self):
+        return self.price_time / self.total_time
+# Example usage:
+twap = TWAP()
+# (timestamp, price)
+twap.update(0, 100)
+twap.update(5, 110)
+twap.update(10, 120)
+
+print("TWAP: ", twap.get())  # Output: TWAP: 110.0
