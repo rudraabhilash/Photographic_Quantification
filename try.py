@@ -402,4 +402,18 @@ asyncio.run(main())
 # This is RAM → CPU.
 # Even the fastest CPUs cannot exceed this.
 
-
+# Analogy (very accurate)
+# Think of DRAM as:
+# A highway
+# With fixed number of lanes
+# Cars = cache lines
+# You can add:
+# More cars (cores)
+# Faster engines (CPU)
+# But the highway width stays the same.
+# Eventually:
+# traffic jam
+# 5️⃣ Why VWAP hits the bandwidth wall early
+# VWAP is:
+# Extremely light on math
+# Extremely heavy on memory
