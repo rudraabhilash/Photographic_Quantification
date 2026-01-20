@@ -148,3 +148,134 @@ async def main():
     ril_vwap = await vwap_engine.getVwap("RIL")
     print("RIL VWAP (async):", ril_vwap)
 asyncio.run(main()) 
+
+
+# 🔹 Stage 2.1 — Symbol-based sharding
+
+# Instead of one global VWAP store, you create N independent shards:
+
+# Shard 0 → symbols hashing to 0
+# Shard 1 → symbols hashing to 1
+# ...
+# Shard N-1
+
+
+# Each shard has:
+
+# Its own dict
+
+# Its own lock
+
+# Its own CPU affinity
+
+# shard_id = hash(symbol) % N
+
+
+# ✔ Updates to different symbols never contend
+# ✔ Linear scaling until memory bandwidth saturates
+
+# 🔹 Stage 2.2 — Feed fan-in pattern
+
+# Real market data:
+
+# NSE feed
+
+# BSE feed
+
+# Dark pools
+
+# Internal order book
+
+# Architecture
+
+# [Feed Threads] ──▶ [Shard Queues] ──▶ [VWAP Shards]
+
+
+# Feed threads never compute
+
+# They push raw events to shard-local queues
+
+# VWAP shards consume sequentially
+
+# ✔ Predictable latency
+# ✔ No shared mutable state across threads
+
+# 🔹 Stage 3.3 — Data structures (key difference)
+
+# Instead of dictionaries:
+
+# Array-indexed symbol IDs
+
+# Struct-of-arrays layout
+
+# total_value[symbol_id]
+# total_volume[symbol_id]
+# Why?
+# Predictable memory access
+# Vectorizable
+# Cache-friendly
+
+
+# “Linear scaling until memory bandwidth saturates” — what does this really mean?
+# What is being scaled?
+
+# You add:
+
+# more shards
+
+# more threads
+
+# more CPU cores
+
+# Each shard processes independent symbols.
+
+# If nothing else limits you, throughput should scale like:
+
+# 2 cores → ~2× updates/sec
+# 4 cores → ~4× updates/sec
+# 8 cores → ~8× updates/sec
+
+
+# This is linear scaling.
+
+# Why does VWAP scale linearly at first?
+
+# Because each update does:
+
+# LOAD  total_value[symbol]
+# LOAD  total_volume[symbol]
+# ADD   size * price
+# STORE total_value[symbol]
+# STORE total_volume[symbol]
+
+
+# That’s:
+
+# Very few instructions
+
+# No complex branching
+
+# No dependency across symbols
+
+# CPU pipelines stay mostly idle waiting for memory.
+
+# 2️⃣ Why does scaling stop? → Memory bandwidth
+# Key fact (critical insight):
+
+# Modern CPUs can execute billions of arithmetic ops/sec,
+# but memory can only move so many bytes per second.
+
+# Example (realistic numbers)
+# Assume:
+
+# Each update touches ~64 bytes (cache lines)
+
+# Server memory bandwidth ≈ 100 GB/s
+
+# Then max updates/sec:
+
+# 100 GB/s ÷ 64 bytes ≈ 1.5 billion updates/sec
+
+
+# No matter how many cores you add:
+# ❌ you cannot exceed memory bandwidth
