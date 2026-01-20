@@ -384,18 +384,22 @@ asyncio.run(main())
 
 #Understanding what is memory movement - 
 # Cache line reality (critical)
-
 # CPUs don’t move 8 bytes
-
 # They move cache lines (typically 64 bytes)
-
 # So even if you update:
-
 # 8 bytes (float)
 # The CPU actually moves:
-
 # 64 bytes from memory → cache
 # 64 bytes from cache → memory (later)
-
-
 # That is memory movement.
+
+#what is memory bandwidth? - Maximum amount of data that can be transferred between CPU and RAM per second(GB/s)
+# This is peak theoretical bandwidth - 100GB/s.
+# Real usable bandwidth:
+# ~70–80 GB/s
+# Important distinction
+# This is not storage (SSD).
+# This is RAM → CPU.
+# Even the fastest CPUs cannot exceed this.
+
+
