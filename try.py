@@ -380,3 +380,22 @@ asyncio.run(main())
 
 # CPUs are fast calculators attached to slow memory pipes.
 # VWAP needs almost no math, but a lot of memory movement.
+
+
+#Understanding what is memory movement - 
+# Cache line reality (critical)
+
+# CPUs don’t move 8 bytes
+
+# They move cache lines (typically 64 bytes)
+
+# So even if you update:
+
+# 8 bytes (float)
+# The CPU actually moves:
+
+# 64 bytes from memory → cache
+# 64 bytes from cache → memory (later)
+
+
+# That is memory movement.
