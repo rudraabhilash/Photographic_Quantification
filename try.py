@@ -8,20 +8,31 @@
 
 # def update(name, size, price)
 # def getavgprice(name): -> ave price of that name
-class vwap:
-	def __init__(self):
-		Self.sumPriceSize = {}
-		Self.sumSize = {}
-	def update(self, name, price, size):
-		if name not in self.sumPriceSize:
-            self.sumPriceSize[name] = 0
-            self.sumSize[name] = 0
-        self.sumPriceSize[name] += price * size
-        self.sumSize[name] += size
-    def getavgprice(self, name):
-        if name not in self.sumPriceSize:
-            return None
-        return self.sumPriceSize[name]/self.sumSize[name]
+class StockVwap:
+    """ 
+    Volume weighted average price calculator 
+    for different stock names using streaming updates.
+    """
+    __slots__ = ('sumPriceSize', 'sumSize')
+
+    def __init__(self) -> None:
+        self.sumPriceSize: Dict[str, float] = {}
+        self.sumSize: Dict[str, int] = {}
+
+    def update(self, symbol: str, price: float, size: int) -> None:
+        symbol = symbol.upper()
+        if symbol not in self.sumPriceSize:
+            self.sumPriceSize[symbol] = 0.0
+            self.sumSize[symbol]      = 0
+
+        self.sumPriceSize[symbol] += price * size
+        self.sumSize[symbol] += size
+
+    def getVwap(self, symbol: str) -> float:
+        symbol = symbol.uppper()
+        if symbol not in self.sumPriceSize:
+            raise KeyError(f"unknown symbol: {symbol}")
+        return self.sumPriceSize[symbol]/self.sumSize[symbol]
 
 
         
