@@ -131,4 +131,20 @@ class AsyncStockVwap:
             if symbol not in self._sumPriceSize:
                 raise KeyError(f"unknown symbol: {symbol}")
             return self._sumPriceSize[symbol] / self._sumSize[symbol]
-            
+
+#Async trade feed simulation
+async def async_market_feed(vwap_engine: AsyncStockVwap, symbol: str):
+    for _ in range(1000):
+        price = random.uniform(100, 200)
+        size = random.randint(1, 1000)
+        await vwap_engine.update(symbol, price, size)
+        await asyncio.sleep(random.uniform(0.001, 0.01))
+async def main():
+    vwap_engine = AsyncStockVwap()
+    await asyncio.gather(
+        async_market_feed(vwap_engine, "RIL"),
+        async_market_feed(vwap_engine, "TCS"),
+    )
+    ril_vwap = await vwap_engine.getVwap("RIL")
+    print("RIL VWAP (async):", ril_vwap)
+asyncio.run(main()) 
