@@ -279,3 +279,104 @@ asyncio.run(main())
 
 # No matter how many cores you add:
 # ❌ you cannot exceed memory bandwidth
+
+
+# Your VWAP math:
+
+# total += size * price
+
+
+# → negligible
+
+# Your real cost:
+
+# load/store dictionary entry
+
+
+# → hundreds of cycles
+
+# Hence:
+
+# Memory access dominates.
+
+# 4️⃣ Why sharding helps — but only up to a point
+# Before sharding:
+
+# One hot dictionary
+
+# Cache line bouncing
+
+# Lock contention
+
+# After sharding:
+
+# Cache-local data
+
+# Independent memory streams
+
+# Better prefetching
+
+# ✔ Linear gains initially
+# ❌ Still bounded by DRAM throughput
+
+# 5️⃣ Python vs C++ — same wall, different distance
+# Python hits the wall earlier because:
+
+# Larger objects
+
+# Pointer indirection
+
+# Worse cache locality
+
+# GIL overhead
+
+# C++:
+
+# Flat arrays
+
+# Tight memory layout
+
+# Prefetch-friendly
+
+# But both hit the same physical limit:
+
+# Bytes/sec from memory
+
+# 6️⃣ Why HFT systems obsess over cache locality
+
+# To delay hitting the bandwidth wall:
+
+# Keep hot symbols in L1/L2 cache
+
+# Use struct-of-arrays
+
+# Pin threads to cores
+
+# Avoid heap allocation
+
+# Avoid dictionaries
+
+# This lets systems run at:
+
+# Cache speed instead of DRAM speed
+
+# Nanoseconds instead of microseconds
+
+# 7️⃣ Interview-quality explanation (say this)
+
+# If asked:
+
+# “Why does it scale linearly and then stop?”
+
+# Answer:
+
+# “Each VWAP update is memory-bound, not compute-bound.
+# Sharding removes contention so throughput scales with cores until the memory subsystem saturates.
+# Beyond that point, adding cores increases cache misses and doesn’t increase throughput.”
+
+# That is textbook correct.
+
+# 8️⃣ One mental model to remember forever
+
+# CPUs are fast calculators attached to slow memory pipes.
+# VWAP needs almost no math, but a lot of memory movement.
