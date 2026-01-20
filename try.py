@@ -20,6 +20,9 @@ class StockVwap:
         self.sumSize: Dict[str, int] = {}
 
     def update(self, symbol: str, price: float, size: int) -> None:
+        if size <= 0:
+            raise ValueError("Trade size must be positive")
+
         symbol = symbol.upper()
         if symbol not in self.sumPriceSize:
             self.sumPriceSize[symbol] = 0.0
