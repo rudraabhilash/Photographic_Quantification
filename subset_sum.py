@@ -51,7 +51,7 @@ def monte_carlo_subset_sum(a, T, K=10_000): # Time: O(N*K), Memory: O(N)
 
         # Randomly choose subset
         for i in range(n):
-            if random.random() < 0.5:   # include with 50% probability
+            if random.random() < 0.5:   # include with 50% probability. Flip a fair coin, head means include, tail means exclude
                 current_subset.append(a[i])
                 current_sum += a[i]
 
