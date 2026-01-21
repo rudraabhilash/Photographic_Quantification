@@ -134,3 +134,35 @@ print(f'PPF value at 95th percentile: {ppf_value}')
 # PDF value at x=1.0: 0.24197072451914337
 # CDF value at x=1.0: 0.8413447460685429
 # PPF value at 95th percentile: 1.644853626951472
+
+
+
+# VaR modeling - 
+# VaR at 99% is the loss level such that 99% of outcomes are better than it, and 1% are worse.
+# Example:
+# If CDF(₹50M) = 0.99
+# 👉 ₹50M is the 99% VaR
+#therefore, VaR is literally the PPF
+# Concept	Meaning
+# CDF	How safe am I up to this loss?
+# PPF(VaR) What loss makes me α% safe?
+# Key limitation of VaR (important)
+# VaR tells you:
+# ❌ Nothing about how bad losses are after that point
+# Two portfolios can have:
+# Same VaR
+# Very different disasters beyond VaR
+
+
+# 2️⃣ CVaR / Expected Shortfall using PDF
+# CVaR is the average loss on the really bad days, i.e. given that you are already beyond VaR.
+# Metric	                 Question it answers
+# VaR(Tail cutoff)        	“Where does the bad region start?”
+# CVaR(Tail average)	    “How bad is the bad region on average?”
+# From simulated losses - 
+# VaR_99 = np.quantile(losses, 0.99)
+# CVaR_99 = losses[losses >= VaR_99].mean()
+
+# VaR is the α-quantile of the loss distribution, i.e. the PPF evaluated at confidence level α.
+# CVaR is the expected loss conditional on losses exceeding VaR, capturing tail severity.
+# VaR tells you where risk starts; CVaR tells you how bad it gets once it starts.
