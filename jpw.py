@@ -39,3 +39,22 @@ region_losses = pd.pivot_table(
     aggfunc="sum"
 )
 print('region_losses = \n', region_losses)
+
+# Example 3: Region × Industry aggregation
+region_industry_losses = pd.pivot_table(
+    loss_long,
+    index="Scenario",
+    columns=["Region", "Industry"],
+    values="Loss",
+    aggfunc="sum"
+)
+print('region_industry_losses = \n', region_industry_losses)
+# Example 4: Desk-level loss distributions
+desk_losses = pd.pivot_table(
+    loss_long,
+    index="Scenario",
+    columns="Desk",
+    values="Loss",
+    aggfunc="sum"
+)
+print('desk_losses = \n', desk_losses)
