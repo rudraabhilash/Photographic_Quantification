@@ -1,3 +1,10 @@
+# Problem:
+# A trading system needs to calculate transaction cost, but the fee logic changes:
+# Equity trades → % based
+# Futures trades → flat fee
+# Options trades → per-lot fee
+# We want to switch fee logic without changing the main code.
+
 from abc import ABC, abstractmethod
 
 # Strategy Interface
