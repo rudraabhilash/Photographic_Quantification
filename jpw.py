@@ -10,7 +10,7 @@ data_rows = [
 ]
 
 loss_df = pd.DataFrame(data_rows, columns=obligors)
-
+print(loss_df)
 metadata = pd.DataFrame({
     "Obligor": obligors,
     "Region": ["US", "US", "EU", "EU", "APAC", "APAC"],
@@ -18,4 +18,12 @@ metadata = pd.DataFrame({
     "Desk": ["DL", "DL", "IB", "IB", "AMC", "AMC"]
 })
 
+loss_long = (
+    loss_df
+    .reset_index()
+    .melt(id_vars="index", var_name="Obligor", value_name="Loss")
+    .rename(columns={"index": "Scenario"})
+)
+print(loss_long)
+loss_long = loss_long.merge(metadata, on="Obligor")
 
