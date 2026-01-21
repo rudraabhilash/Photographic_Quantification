@@ -29,3 +29,13 @@ loss_long = loss_long.merge(metadata, on="Obligor")
 print('loss_long = \n', loss_long)
 firm_losses = loss_long.groupby("Scenario")["Loss"].sum()
 print('firm_losses = \n', firm_losses)
+
+# Example 2: Region-level loss distributions
+region_losses = pd.pivot_table(
+    loss_long,
+    index="Scenario",
+    columns="Region",
+    values="Loss",
+    aggfunc="sum"
+)
+print('region_losses = \n', region_losses)
