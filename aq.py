@@ -449,3 +449,36 @@ twap.update(5, 110)
 twap.update(10, 120)
 
 print("TWAP: ", twap.get())  # Output: TWAP: 110.0
+
+
+
+#################################################################################################
+
+# ConnectionManager class
+#     Initialize 'n' connections
+#     support get_conn, put_conn
+#     Raise exception if no connection available
+
+import threading
+class connectionPool:
+    def __init__(self, size):
+        self.size = size
+        self.pool = []
+        self._lock = threading.Lock()
+        self.pool = ['con' + str(idx) for idx in range(size)]
+        for idx in range(size):
+            self.pool.append('con' + str(idx))
+                
+    def get_con(self):
+        if(not self.pool):
+            raise Exception("Pool is empty!")
+        with self._lock:
+            obj = self.pool[0]
+            self.pool.pop(0)
+        return obj 
+    def put_back_conn(self, con: str):
+        return self.pool.append(con)
+
+obj = connectionPool(5)
+obj1 = obj.get_con()
+print(obj1)
