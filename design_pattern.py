@@ -7,6 +7,7 @@
 
 from abc import ABC, abstractmethod
 
+
 # Strategy Interface
 class FeeStrategy(ABC):
     @abstractmethod
