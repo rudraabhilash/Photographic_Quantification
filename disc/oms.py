@@ -381,4 +381,285 @@
 # Amend
 # Allocate
 
+# Blotter can be fast by pagination, filtering, and incremental updates.
+# Incremental updates (VERY IMPORTANT)
+# What problem does this solve?
+
+# ❌ Bad approach:
+# Reload entire blotter every second
+
+# ✅ Good approach:
+# Only update what changed
+# What “incremental update” means
+# Instead of:
+# Send all 10,000 orders again
+# OMS sends:
+# Order 123 → filledQty changed 300 → 800
+# UI:
+# Updates only that row
+
+
+# 4️⃣ How blotter stays real-time (brief but clear)
+# A. WebSocket / Push updates
+# Instead of UI asking repeatedly:
+# “Anything changed?”
+# OMS pushes updates:
+# Order 123 updated
+
+
+# Result:
+# Near real-time
+# No polling storm
+
+# B. Event-driven OMS notifications
+# OMS internally works on events:
+# FillReceived
+# OrderCancelled
+# OrderRejected
+# Each event:
+# Updates OMS state
+# Triggers notification to UI
+# So UI reacts to events, not guesses.
+
+# C. Periodic re-sync on reconnect (safety net 🛟)
+# Why needed?
+# Network drops
+# Browser sleeps
+# WebSocket disconnects
+# When UI reconnects:
+# UI → OMS: Give me all orders updated after T
+# OMS:
+# Sends latest snapshot
+# UI fixes any missed updates
+# This prevents:
+# Ghost orders
+# Wrong status
+
+# “Through event-driven updates pushed from OMS over persistent connections, 
+# with periodic reconciliation to handle disconnects.”
+# ************************************************************************************
+# ************************************************************************************
+
+# 2️⃣ API / Gateway Layer
+# Why this layer exists
+# Decouple clients from OMS internals
+# Protect OMS from bad traffic
+# Responsibilities
+# Authentication / authorization
+# Rate limiting
+# Request validation
+# Protocol translation (REST ↔ FIX)
+
+# Design note
+# This is where you stop bad requests before touching core OMS logic.
+
+# ************************************************************************************
+# ************************************************************************************
+# 3️⃣ OMS Core Services (Heart of the system ❤️)
+
+# This is where senior engineers are evaluated.
+
+# 3.1 Order Lifecycle Service
+# Handles finite state machine of orders.
+# Typical states:
+# NEW → VALIDATED → SENT
+# SENT → PARTIALLY_FILLED → FILLED
+# SENT → CANCELLED
+# REJECTED (terminal)
+
+# Key senior concept
+# Order state must be strongly consistent
+# No two services can “own” order state
+
+# 3.2 Validation & Business Rules Engine
+# Checks:
+# Instrument eligibility
+# Trading hours
+# Client permissions
+# Quantity & price bands
+# Asset-specific rules
+# Senior design pattern
+# Rule engine is data-driven, not hard-coded
+# Rules loaded from DB / config
+# Versioned rules for audit
+
+# 3.3 Amend / Cancel Management
+# Harder than it looks.
+# Challenges:
+# Race conditions with fills
+# Partial fills during amend
+# Exchange-specific cancel semantics
+
+# Golden rule
+# OMS must reconcile exchange truth, not assume success.
+
+# ************************************************************************************
+# ************************************************************************************
+
+# 4️⃣ Risk & Compliance Layer
+
+# Often integrated, sometimes external.
+
+# Pre-trade risk
+
+# Max order size
+
+# Exposure limits
+
+# Fat-finger checks
+
+# Post-trade compliance
+
+# Market abuse checks
+
+# Audit trails
+
+# Regulatory reporting
+
+# Senior insight
+
+# Risk failures must be deterministic and explainable
+
+# Compliance requires immutability
+
+# ************************************************************************************
+# ************************************************************************************
+
+# 5️⃣ Execution Adapter Layer (Crucial abstraction)
+
+# Purpose
+
+# Hide exchange / EMS complexity from OMS
+
+# OMS → Adapter → Exchange / EMS
+
+
+# Each adapter handles:
+
+# Protocol (FIX, native API)
+
+# Exchange-specific fields
+
+# Error normalization
+
+# Why this matters
+
+# OMS code stays stable
+
+# New venues added without OMS rewrite
+
+# ************************************************************************************
+# ************************************************************************************
+
+# 6️⃣ Persistence Layer (State + Audit)
+# Databases used (typical)
+# Data	DB Type
+# Orders (current)	RDBMS
+# Order history	Append-only tables
+# Trades	RDBMS
+# Audit logs	Immutable store
+# Reference data	Cached
+
+# Senior-level must
+
+# Exactly-once state transitions
+
+# Replayable event history
+
+# Regulatory-grade audit
+
+# ************************************************************************************
+# ************************************************************************************
+# 7️⃣ Eventing & Messaging
+# OMS is event-driven, not request-driven.
+
+# Events like:
+
+# OrderCreated
+
+# OrderValidated
+
+# FillReceived
+
+# CancelConfirmed
+
+# Benefits:
+
+# Loose coupling
+
+# Easy recovery
+
+# Real-time downstream updates
+
+# ************************************************************************************
+# ************************************************************************************
+# 8️⃣ Reporting & Downstream Consumers
+
+# OMS feeds:
+
+# P&L systems
+
+# Position management
+
+# Clearing & settlement
+
+# Regulatory reporting
+
+# Often via:
+
+# Kafka topics
+
+# Batch exports
+
+# APIs
+
+# ************************************************************************************
+# ************************************************************************************
+# Cross-cutting concerns (INTERVIEW GOLD ⭐)
+# 🔒 Consistency
+
+# Orders require strong consistency
+
+# Prefer DB transactions over eventual consistency
+
+# ⏱ Latency
+
+# OMS ≠ ultra-low latency
+
+# Determinism > speed
+
+# 🔁 Recovery
+
+# Crash-safe replay from persisted state
+
+# Idempotent message handling
+
+# 📜 Auditability
+
+# Every state change logged
+
+# No deletes, only corrections
+
+# 📈 Scalability
+
+# Horizontal scaling by:
+
+# Client
+
+# Desk
+
+# Asset class
+
+# OMS vs EMS boundary (clear articulation)
+# OMS Owns	EMS Owns
+# Order lifecycle	Market execution
+# Business rules	Algo logic
+# Client context	Venue optimization
+# Compliance	Speed
+
+
+#“OMS is a stateful, rule-driven control system that owns the full order lifecycle, 
+# ensures compliance and auditability, and delegates venue-specific execution to 
+# downstream execution systems via adapters.”
+# ************************************************************************************
 # ************************************************************************************
