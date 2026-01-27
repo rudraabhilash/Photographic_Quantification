@@ -179,6 +179,71 @@
 # Risk status
 # These must always come from OMS.
 
+# Filled = exchange has matched your order with a counterparty.
+# Example:
+# Buy 1000 shares @ 100
+# Market reality:
+# 300 shares matched at 100
+# later 200 shares matched at 99.9
+# later 500 shares matched at 100.1
+# Each match = fill
+# Exchange
+#    ↓ (trade confirmation)
+# Execution System / EMS
+#    ↓ (normalized fill message)
+# OMS
+# OMS never talks directly to exchange.
+
+# Fill = actual execution event from exchange
+# One order → many fills
+# Example:
+# Order: Buy 1000
+# Fill #1: 300 @ 1500
+# Fill #2: 200 @ 1499.5
+# Fill #3: 500 @ 1500.2
+
+
+# OMS stores each fill separately.
+# Why?
+# P&L calculation
+# Audit
+# Exchange reconciliation
+
+# Amendments
+# Changes to an existing order
+# Change price from 1500 → 1501
+# Stored because:
+# Regulators care
+# Disputes happen
+
+# Cancellations
+# Trader intent to stop execution
+# Cancel remaining quantity
+# Important:
+# Cancel request ≠ cancel success
+# OMS stores both request & confirmation
+
+
+# Timestamps
+# Every step has time:
+# Order received
+# Sent to execution
+# Fill received
+# Cancel confirmed
+# Used for:
+# Latency analysis
+# Regulatory reporting
+# Dispute resolution
+
+# Audit trail - Immutable history of everything
+# Includes:
+# Who did what
+# When
+# From where
+# Before/after state
+# No deletes. Ever.
+
+
 # 2️⃣ Real scenario where revalidation SAVES you 💣
 # Scenario: Cached order state without revalidation
 # UI caches:
@@ -264,5 +329,56 @@
 
 # “Caching improves UI responsiveness and reduces OMS read load, while revalidation is 
 # applied selectively on state-changing actions to ensure correctness without sacrificing 
-# performance.”
+# performance.” 
+
+# Order blotter = a real-time table that shows the current state of all orders
+# Think of it as the live dashboard of trading activity.
+
+# Exchange fills
+#      ↓
+# Execution System
+#      ↓
+# OMS (state updated)
+#      ↓
+# Order Blotter UI
+
+# The blotter never talks to exchange directly.
+
+# Why order blotter is CRITICAL
+
+# 1️⃣ Trader decision-making
+# Trader answers instantly:
+# “Is my order live?”
+# “How much is filled?”
+# “Should I amend or cancel?”
+# Without blotter → blind trading.
+
+# 2️⃣ Operations & support
+# Ops teams use blotter to:
+# Investigate issues
+# Answer client queries
+# Reconcile mismatches
+
+# 3️⃣ Compliance & audit
+# Blotter provides:
+# Time-stamped visibility
+# Evidence of orderly trading
+
+
+# How blotter stays real-time
+
+# WebSocket / push updates
+# Event-driven OMS notifications
+# Periodic re-sync on reconnect
+
+# An order blotter is a real-time, read-only view that displays the current lifecycle 
+# state of orders as maintained by the OMS, enabling traders and operations to monitor 
+# and act on active and historical orders.Caching rules
+
+# Blotter may cache rows
+# But revalidates on:
+# Cancel
+# Amend
+# Allocate
+
 # ************************************************************************************
