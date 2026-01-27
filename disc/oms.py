@@ -56,3 +56,50 @@
 # 4. Execution: Sends orders to the market for execution.
 # 5. Updates & Reports: Generates reports for clients and compliance.
 
+# ┌─────────────────────────────┐
+# │        Client / Trader UI   │
+# └──────────────┬──────────────┘
+#                ↓
+# ┌─────────────────────────────┐
+# │      API / Gateway Layer    │
+# └──────────────┬──────────────┘
+#                ↓
+# ┌─────────────────────────────┐
+# │        OMS Core Services    │
+# │ ─ Order Lifecycle           │
+# │ ─ Validation & Rules        │
+# │ ─ State Management          │
+# │ ─ Amend / Cancel            │
+# └──────────────┬──────────────┘
+#                ↓
+# ┌─────────────────────────────┐
+# │     Risk & Compliance       │
+# └──────────────┬──────────────┘
+#                ↓
+# ┌─────────────────────────────┐
+# │  Execution Adapter Layer    │
+# └──────────────┬──────────────┘
+#                ↓
+# ┌─────────────────────────────┐
+# │   Execution / EMS / Algo    │
+# └─────────────────────────────┘
+#                ↓
+# ┌─────────────────────────────┐
+# │ Persistence & Reporting     │
+# └─────────────────────────────┘
+# ************************************************************************************
+
+#Client / Trader UI - 
+# 1️⃣ Client / Trader Interface Layer
+
+# Responsibilities
+# Order entry (New / Amend / Cancel)
+# Order blotter (real-time state)
+# Allocation screens
+# Admin & ops dashboards
+
+# Key points (senior-level)
+# OMS must be UI-agnostic
+# UI talks via REST / FIX / gRPC
+# Stateless UI, all state lives in OMS
+# ************************************************************************************
