@@ -704,40 +704,63 @@
 # This is business legality.
 # What this engine checks (and WHY)
 # 1️⃣ Instrument eligibility
-# Is this symbol tradable today?
-# Is contract expired?
-# Proof: Exchanges reject expired contracts → OMS must catch earlier for audit clarity.
+    # Is this symbol tradable today?
+    # Is contract expired?
+    # Proof: Exchanges reject expired contracts → OMS must catch earlier for audit clarity.
 
 # 2️⃣ Trading hours
-# Market open?
-# Auction session?
-# After-hours rules?
-# Proof:
-# Orders sent outside allowed windows can:
-# Be silently rejected
-# Or queued unpredictably
-# OMS must enforce deterministic behavior.
+    # Market open?
+    # Auction session?
+    # After-hours rules?
+    # Proof:
+    # Orders sent outside allowed windows can:
+    # Be silently rejected
+    # Or queued unpredictably
+    # OMS must enforce deterministic behavior.
 
 # 3️⃣ Client permissions
-# Retail vs institutional
-# Asset-class entitlements
-# Proof:
-# Permission errors are compliance violations, not UX issues.
+    # Retail vs institutional
+    # Asset-class entitlements
+    # Proof:
+    # Permission errors are compliance violations, not UX issues.
 
 # 4️⃣ Quantity & price bands
-# Fat-finger protection
-# Exchange price limits
-# Proof:
-# One wrong zero (100 → 10,000) can move markets.
-# This is a documented risk (see historical “fat finger” incidents).
+    # Fat-finger protection
+    # Exchange price limits
+    # Proof:
+    # One wrong zero (100 → 10,000) can move markets.
+    # This is a documented risk (see historical “fat finger” incidents).
+    # A fat-finger error in trading is when a trader or operator types the wrong number for 
+    # price or quantity, often by mis-keying an extra zero or clicking the wrong field, 
+    # leading to big unintended orders. These have caused huge financial losses and even 
+    # brief market dislocations.
+
+    # 1️⃣ UBS Dentsu share error (2001)
+    # A trader at UBS intended to sell 6 Dentsu shares at ¥610,000 each, but instead sold
+    # 610,000 shares at ¥6. UBS had to buy back shares at market value, resulting in roughly 
+    # US$100 million loss.This error was directly due to mis-typed quantity/price in the 
+    # trading system — a classic fat finger case.
+    # 2️⃣ Mizuho Securities short sell error (2006)
+    # A trader at Mizuho Securities in Japan mistakenly placed massive short orders due to a
+    # fat-finger error.The firm had to unwind positions later at great cost (about ¥40 billion).
+    # This shows incorrect entry in price/quantity can cause major financial loss.
+    # 3️⃣ Deutsche Bank junior trader mistake (2015)
+    # A junior trader at Deutsche Bank accidentally sent US $6 billion instead of the intended
+    # amount when processing a payment. Although this was a cash transfer rather than a tradable 
+    # security, it is categorized as a fat-finger data entry error with huge financial impact.
+    # 4️⃣ Citigroup trading error / European market sell-off (2022)
+    # A trader at Citigroup input the wrong amount, causing $1.4 billion in erroneous sell orders
+    # instead of the intended $58 million. This triggered a brief selloff in European equity markets
+    # ,leading to a regulatory fine of ~£62 million. Price and quantity mis-entry was the root cause.
+
 
 # 5️⃣ Asset-specific rules
-# Examples:
-# Options: strike / expiry combinations
-# Futures: lot size multiples
-# Equities: short-sell rules
-# Proof:
-# Rules differ per asset → hard-coding creates bugs when rules change.
+    # Examples:
+    # Options: strike / expiry combinations
+    # Futures: lot size multiples
+    # Equities: short-sell rules
+    # Proof:
+    # Rules differ per asset → hard-coding creates bugs when rules change.
 
 # Data-driven rules (how it works)
 # Rules stored in DB / config
