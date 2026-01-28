@@ -111,8 +111,42 @@
 # Speed	                  Moderate	       Fast
 # Contract	              Implicit         Explicit
 # Browser friendly	      Yes            	No
-# Streaming	Hard	Built-in
-# Internal services	OK	Excellent
+# Streaming            	  Hard	           Built-in
+# Internal services	      OK	           Excellent
+# Why gRPC is popular in OMS / trading systems
+# 1️⃣ Performance 🚀
+# Binary format (smaller payloads)
+# Lower CPU & network overhead
+# Perfect for:
+# OMS ↔ Risk
+# OMS ↔ Execution
+# OMS ↔ Reporting
+# 2️⃣ Strong contracts
+# With REST:
+# Missing fields show up at runtime
+# Breaking changes slip through
+# With gRPC:
+# Contract is explicit
+# Breaking change = compile error
+# 3️⃣ Streaming (very important)
+# gRPC supports:
+# Server streaming
+# Client streaming
+# Bi-directional streaming
+# Example:
+# OMS pushes continuous order updates to blotter backend
+# Push model Much cleaner than polling(pull model every sec) REST.
+
+
+#Sample protobuf code for User message - 
+# import user_pb2
+# # Create the object
+# user = user_pb2.User()
+# user.id = 1
+# user.name = "Alice"
+# user.email = "alice@example.com"
+# # Serialize to a compact binary string
+# binary_data = user.SerializeToString()
 
 # What a Stateless UI is ✅
 # A stateless UI:
