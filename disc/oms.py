@@ -753,6 +753,19 @@
     # instead of the intended $58 million. This triggered a brief selloff in European equity markets
     # ,leading to a regulatory fine of ~£62 million. Price and quantity mis-entry was the root cause.
 
+    # 🛡️ 1. Pre-Trade Controls (Exchange-Level Filters) - to prevent from fat-finger
+    # A. Size and Price Reasonability Limits
+    # Many exchanges reject orders that are clearly outside reasonable bounds before they 
+    # enter the market’s matching engine:
+    # Price reasonability limits: orders with prices far outside current market range are
+    #       blocked. This is a direct pre-trade defense against entering an order that is 
+    #       obviously a fat-finger mistake (e.g., a price thousands of % away from current 
+    #       levels).
+    # Order quantity caps: Exchanges can set maximum allowed quantity caps for single orders or 
+    #       for a participant’s session. Orders above these thresholds are not accepted or are
+    #       held for review.
+    # These controls prevent most erroneous fat-finger events before execution rather than 
+    #       relying on post-execution cancelation.
 
 # 5️⃣ Asset-specific rules
     # Examples:
