@@ -453,6 +453,104 @@
 # Design note
 # This is where you stop bad requests before touching core OMS logic.
 
+# Reason 1: Decouple clients from OMS internals
+# What this means in practice
+# Clients should not know:
+# OMS internal data model
+# OMS internal services
+# OMS internal state machine
+# Clients should only know:
+
+# POST /orders
+# POST /orders/{id}/cancel
+# GET  /orders/{id}
+
+# 👉 If OMS internals change, clients don’t break.
+
+# Reason 2: Protect OMS from bad traffic
+
+# OMS core is:
+# Stateful
+# Transactional
+# Sensitive to load
+
+# Bad traffic can:
+# Corrupt state
+# Overload DB
+# Break order sequencing
+# Gateway acts as shock absorber 🛡️
+
+# A. Authentication / Authorization
+    # Is this trader logged in? #Authentication example
+    # Is this algo service trusted? #Authentication example
+    # Is this request signed? #Authentication example
+    # Examples: OAuth tokens, API keys, FIX session credentials
+
+    # Trader A can trade equities, not options #Authorization example
+    # Algo X can only place orders, not cancel manually #Authorization example
+    # Ops user can view, not trade #Authorization example
+
+# B. Rate limiting (EXTREMELY IMPORTANT) - Action - Throttle/reject/alert
+    # What problem this solves
+    # Without rate limiting:
+    # Algo bug sends 10,000 orders/sec
+    # OMS DB overloaded
+    # All traders affected
+
+# C. Request validation
+    # Syntax validation
+        # Required fields present? Field types correct? Enum values valid?
+
+    # Semantic validation
+        # Quantity > 0? Price not negative? Order type supported?
+
+    #UI also does validation, but UI can not be trusted by design and 
+    #also UI can be bypassed, Algo client dont use web UI, Bugs happen.
+    # In real OMS systems:
+    # Client	Validation capability
+    # Web UI	        Strong
+    # Mobile UI	        Weak
+    # Algo client	    Custom
+    # External broker	FIX-based
+    # Batch loader	    Scripted
+    # You cannot enforce validation consistently across all of them.
+    # Gateway is the single enforcement point.
+
+# D. Protocol translation (REST ↔ FIX)
+# Different clients speak different languages
+# UI → REST / JSON
+# External broker → FIX
+# Internal algo → gRPC
+# Gateway responsibility
+# REST JSON → internal OMS command
+# FIX msg   → internal OMS command
+# OMS sees: CreateOrderCommand
+
+# What happens if bad requests reach OMS?
+# OMS core:
+# Opens DB transaction
+# Locks rows
+# Evaluates rules
+# Updates state
+
+# Even if rejected:
+# CPU used
+# DB used
+# Latency increased
+
+# Gateway rejection vs OMS rejection
+#    Layer	            Cost
+# Gateway reject	  Microseconds
+# OMS reject	      DB + locks + logs
+# At scale, this difference is massive.
+
+# 4️⃣ Design patterns commonly used (senior detail)
+# API Gateway pattern
+# BFF (Backend for Frontend)
+# Adapter pattern (protocol handling)
+# Stateless processing
+# Token-based auth
+
 # ************************************************************************************
 # ************************************************************************************
 # 3️⃣ OMS Core Services (Heart of the system ❤️)
