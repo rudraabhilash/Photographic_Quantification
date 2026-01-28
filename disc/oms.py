@@ -766,6 +766,41 @@
     #       held for review.
     # These controls prevent most erroneous fat-finger events before execution rather than 
     #       relying on post-execution cancelation.
+    # 📊 2. Price Bands and Limit Up–Limit Down (LULD) Mechanism
+    # Most modern stock and derivatives exchanges implement price bands that constrain 
+    # how far a security’s price can move in a short time window. If the next trade would occur outside 
+    # the permitted range, the exchange:
+        # pauses trading on that security, 
+        # or refuses to match that trade at out-of-range prices.
+    # This is a key protection against fat-finger orders that would otherwise create an artificial price 
+    # spike or plunge.
+    # 🚨 3. Circuit Breakers (Market-Wide Safety Nets)
+    # Circuit breakers are not fat-finger specific, but they are activated by extreme price 
+    # moves — which can be caused by erroneous trades:
+    # Example: U.S. stock markets halt for 15 minutes if the S&P 500 drops 7% intraday. This gives 
+    # participants time to absorb information and prevents mechanical cascade selling triggered by 
+    # a single large erroneous price move.
+    # 🧠 4. Post-Execution Review and “Clearly Erroneous Trade” Rules
+    # Even with pre-trade checks, large errors may slip through or execute on venues without pre-trade
+    #  limits. Exchanges historically permit post-trade review windows, e.g.:
+    # NYSE, NASDAQ, CBOT, BATS, etc., allow 30 minutes after execution to request trade cancellation 
+    # if an order was clearly erroneous. This is a formal mechanism to reverse trades that meet strict 
+    # criteria indicating a genuine mistake, such as:
+    # price vastly different from normal range quantity orders orders never reasonably tradable
+    # obvious mis-entry errors.
+    # 🔄 5. Exchange Surveillance & Real-Time Monitoring
+    # Exchanges continuously monitor trading activity using algorithmic surveillance systems that look 
+    # for patterns inconsistent with normal market behavior, such as:
+    # sudden large orders far from the prevailing price
+    # volume spikes with no corresponding depth in order book
+    # orders that break typical market microstructure patterns
+    # These can trigger:
+    # automated halts
+    # alerts to surveillance teams
+    # deeper review for clearly erroneous designation
+    # Regulatory guidance emphasizes using multiple complementary controls to preserve market orderly 
+    # behavior.
+
 
 # 5️⃣ Asset-specific rules
     # Examples:
