@@ -813,6 +813,30 @@
     # Wait for confirmation
     # Reconcile with fills
 
+# Golden rule (this is CRITICAL)
+# “OMS must reconcile exchange truth, not assume success”
+# Meaning (precise)
+# OMS must treat:
+# Exchange fills
+# Exchange rejects
+# as authoritative truth
+# Not:
+# UI confirmation
+# Network success
+# “We sent the message”
+
+# Proof by failure scenario
+# OMS assumes:
+# Cancel sent → order cancelled
+# Exchange reality:
+# Order already filled
+# Result:
+# OMS says cancelled
+# Exchange says filled
+# Positions don’t match
+# Clearing fails
+# Firm loses money
+# This is catastrophic, not theoretical.
 # ************************************************************************************
 # ************************************************************************************
 
