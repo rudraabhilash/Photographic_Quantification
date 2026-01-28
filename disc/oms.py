@@ -636,18 +636,19 @@
 # Golden rule
 # OMS must reconcile exchange truth, not assume success.
 
-OMS Core Services = the authoritative brain that owns order truth
-This layer:
-Owns order state
-Owns legal transitions
-Owns business correctness
-Survives crashes and disputes
-Everything else (UI, gateway, EMS) is peripheral.
-3.1 Order Lifecycle Service
-Handles finite state machine (FSM) of orders
-What “finite state machine” means (precisely)
-An order can only be in one of a predefined set of states, and can move only via 
-allowed transitions.
+# ************************************************************************************
+# OMS Core Services = the authoritative brain that owns order truth
+# This layer:
+# Owns order state
+# Owns legal transitions
+# Owns business correctness
+# Survives crashes and disputes
+# Everything else (UI, gateway, EMS) is peripheral.
+# 3.1 Order Lifecycle Service
+# Handles finite state machine (FSM) of orders
+# What “finite state machine” means (precisely)
+# An order can only be in one of a predefined set of states, and can move only via 
+# allowed transitions.
 # ************************************************************************************
 # ************************************************************************************
 
