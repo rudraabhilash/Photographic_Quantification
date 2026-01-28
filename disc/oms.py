@@ -103,6 +103,17 @@
 # UI talks via REST / FIX / gRPC
 # Stateless UI, all state lives in OMS
 
+#gRPC - gRPC is a fast, binary, contract-based way for services to talk to each other.
+#grpc - Google Remote Procedure Call. 
+# gRPC vs REST (practical comparison)
+# Aspect	               REST	           gRPC
+# Payload	              JSON(text)	   Protobuf (binary)
+# Speed	                  Moderate	       Fast
+# Contract	              Implicit         Explicit
+# Browser friendly	      Yes            	No
+# Streaming	Hard	Built-in
+# Internal services	OK	Excellent
+
 # What a Stateless UI is ✅
 # A stateless UI:
 # Does not remember orders
