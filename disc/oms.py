@@ -644,11 +644,122 @@
 # Owns business correctness
 # Survives crashes and disputes
 # Everything else (UI, gateway, EMS) is peripheral.
+
 # 3.1 Order Lifecycle Service
 # Handles finite state machine (FSM) of orders
 # What “finite state machine” means (precisely)
 # An order can only be in one of a predefined set of states, and can move only via 
 # allowed transitions.
+
+# Handles finite state machine of orders.
+# Typical states:
+# NEW → VALIDATED → SENT
+# SENT → PARTIALLY_FILLED → FILLED(or cancel)
+# SENT → CANCELLED
+# REJECTED (terminal)
+
+# Why these states exist (proof by necessity)
+# Example: Why NEW and VALIDATED must be separate
+# NEW = “Trader asked for something”
+# VALIDATED = “OMS guarantees it is legal”
+# If you merge them:
+# Illegal orders may reach execution
+# Audit cannot prove checks were done
+# Regulatory failure.
+
+# Why PARTIALLY_FILLED is mandatory
+# Example:
+# Order: Buy 1000 shares
+# Fill 1: 300
+# Fill 2: 200
+# If you jump directly to FILLED:
+# You lose intermediate truth
+# You cannot reconcile exchange trades
+# P&L & compliance break
+# This is not optional — exchanges fill incrementally.
+
+#At any moment, there is exactly one correct order state, and all readers see the same truth.
+# “No two services can own order state” — WHY
+# If two services own state, this happens:
+# OMS Core: order = SENT
+# Risk Service cache: order = NEW
+
+# Risk allows amend → OMS rejects → inconsistency.
+# Proof:
+# This exact issue has caused real-world trading halts.
+
+# Correct design (single ownership)
+# OMS Core = single writer
+# Others = read-only subscribers
+
+# OMS writes state
+# Others react to events
+# Nobody else mutates state
+# This is non-negotiable in trading systems.
+
+# ************************************************************************************
+# 3.2 Validation & Business Rules Engine
+
+# This is not UI validation and not gateway validation.
+# This is business legality.
+# What this engine checks (and WHY)
+# 1️⃣ Instrument eligibility
+# Is this symbol tradable today?
+# Is contract expired?
+# Proof: Exchanges reject expired contracts → OMS must catch earlier for audit clarity.
+
+# 2️⃣ Trading hours
+# Market open?
+# Auction session?
+# After-hours rules?
+# Proof:
+# Orders sent outside allowed windows can:
+# Be silently rejected
+# Or queued unpredictably
+# OMS must enforce deterministic behavior.
+
+# 3️⃣ Client permissions
+# Retail vs institutional
+# Asset-class entitlements
+# Proof:
+# Permission errors are compliance violations, not UX issues.
+
+# 4️⃣ Quantity & price bands
+# Fat-finger protection
+# Exchange price limits
+# Proof:
+# One wrong zero (100 → 10,000) can move markets.
+# This is a documented risk (see historical “fat finger” incidents).
+
+# 5️⃣ Asset-specific rules
+# Examples:
+# Options: strike / expiry combinations
+# Futures: lot size multiples
+# Equities: short-sell rules
+# Proof:
+# Rules differ per asset → hard-coding creates bugs when rules change.
+
+# Data-driven rules (how it works)
+# Rules stored in DB / config
+# Evaluated dynamically
+# Rule ID + version attached to decision
+# Example:
+# Rule: MAX_QTY_EQ_INTRA
+# Version: v3
+# Result: PASS
+
+# Versioned rules — WHY this matters (proof)
+# Regulator asks:
+# “Why was this order allowed last Tuesday?”
+# If rules are versioned:
+# You can replay decision
+# You can prove correctness
+# Without versioning:
+# You cannot defend the system
+# This is regulatory survival, not elegance.
+
+
+
 # ************************************************************************************
 # ************************************************************************************
 
