@@ -757,8 +757,61 @@
 # Without versioning:
 # You cannot defend the system
 # This is regulatory survival, not elegance.
+# ************************************************************************************
+# 3.3 Amend / Cancel Management
+# “Harder than it looks” — here’s PROOF
 
+# Problem 1: Race condition with fills
+    # Timeline
+    # T1: Trader sends CANCEL
+    # T2: Exchange sends FILL (remaining qty)
 
+    # Which came first?
+    # Network latency makes this non-deterministic.
+
+    # Correct OMS behavior
+    # Record both events
+    # Compare timestamps / sequence
+    # Accept exchange truth
+    # If fill happened first:
+    # Cancel must be rejected
+    # Order becomes FILLED
+
+    # If OMS assumes cancel success ❌
+    # You get:
+    # “Cancelled” order
+    # With real trades at exchange
+    # Broken positions
+    # Regulatory breach
+    # This has happened in real systems.
+
+# Problem 2: Partial fills during amend
+    # Example:
+    # Original: Buy 1000 @ 100
+    # Filled: 400
+    # Amend: Change price to 101
+    # What exactly is amended?
+    # Correct answer:
+    # Remaining 600 only
+
+    # OMS must:
+    # Split intent
+    # Preserve executed quantity
+    # Adjust open quantity
+    # This is not trivial and must be explicit.
+
+# Problem 3: Exchange-specific cancel semantics
+
+    # Different exchanges:
+    # Cancel is best-effort
+    # Cancel is asynchronous
+    # Cancel can be rejected silently
+    # Proof:
+    # FIX protocol itself defines cancel as a request, not a command.
+    # OMS must:
+    # Track cancel-requested state
+    # Wait for confirmation
+    # Reconcile with fills
 
 # ************************************************************************************
 # ************************************************************************************
