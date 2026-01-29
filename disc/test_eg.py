@@ -52,8 +52,40 @@ def test_divisible_by_3(input_value):
 
 # Parameterizing of a test is done to run the test against multiple sets of inputs.
 # @pytest.mark.parametrize
+# # Here, the test function test_multiplication_11 is going to run four times.
 import pytest
 @pytest.mark.parametrize("num, output",[(1,11),(2,22),(3,35),(4,44)])
 def test_multiplication_11(num, output):
    assert 11*num == output
-# Here, the test function test_multiplication_11 is going to run four times.
+
+
+# A test is not relevant for some time due to some reasons.
+# A new feature is being implemented and we already added a test for that feature.
+# In these situations, we have the option to xfail(but executes) the test or skip(doesnt execute) the tests.
+
+import pytest
+@pytest.mark.xfail
+@pytest.mark.great
+def test_greater():
+   num = 100
+   assert num > 100
+
+@pytest.mark.skip
+@pytest.mark.others
+def test_less():
+   num = 100
+   assert num < 200
+
+
+# The syntax to stop the execution of test suite soon after n number of test fails is as follows −
+# pytest test_failure.py -v --maxfail 1      # pytest --maxfail = <num>
+
+# By default, pytest runs tests in sequential order. In a real scenario, this will lead 
+# to a large execution time. pytest provides us with an option to run tests in parallel.
+# pip install pytest-xdist
+# pytest -n 3  # -n <num> runs the tests by using multiple workers, here it is 3.
+# It matters when the test suite is large.
+
+# To generate the test report in an HTML file:
+# pip install pytest-html   
+# Now, we can run tests by using the syntax pytest --html=<filename>.html
