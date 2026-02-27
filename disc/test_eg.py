@@ -45,6 +45,16 @@ def input_value():
 def test_divisible_by_3(input_value):
    assert input_value % 3 == 0
 
+# How to test web apis
+# Assume urlpatterns = [ path("hello/", hello_view), ] in urls.py and def hello_view(request): return JsonResponse({"message": "Hello Django"}) in views.py
+# client is a built-in pytest-django fixture. so, below is sample test case.
+import pytest
+@pytest.mark.django_db
+def test_hello_view(client):
+    response = client.get("/hello/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello Django"}
+
 # A fixture function defined inside a test file has a scope within the test file only. 
 # We cannot use that fixture in another test file. To make a fixture available to multiple 
 # test files, we have to define the fixture function in a file called conftest.py
