@@ -83,8 +83,50 @@ for path in EXAMPLE_PATHS:
     p = list(path.split('/'))  #"Documents/Spring/Math"
     t.insert(p)
 
+#solution gpt- 
+from typing import Dict
 
 
+class TrieNode:
+    def __init__(self) -> None:
+        self.children: Dict[str, "TrieNode"] = {}
+        self.is_end: bool = False
+
+
+class WordTrie:
+    def __init__(self) -> None:
+        self.root = TrieNode()
+
+    def insert(self, phrase: str) -> None:
+        node = self.root
+        words = phrase.split()
+
+        for word in words:
+            node = node.children.setdefault(word, TrieNode())
+
+        node.is_end = True
+
+    def print_tree(self) -> None:
+        print("root")
+        self._print_recursive(self.root, prefix="")
+
+    def _print_recursive(
+        self,
+        node: TrieNode,
+        prefix: str,
+    ) -> None:
+
+        children = list(node.children.items())
+        total = len(children)
+
+        for index, (word, child) in enumerate(children):
+            is_last = index == total - 1
+
+            connector = "└── " if is_last else "├── "
+            print(prefix + connector + word)
+
+            extension = "    " if is_last else "│   "
+            self._print_recursive(child, prefix + extension)
 # Example
 #
 # print_directory_tree(EXAMPLE_PATHS):
