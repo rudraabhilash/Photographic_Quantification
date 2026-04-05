@@ -268,5 +268,9 @@ if __name__ == "__main__":
 
     print("\nFinal Output:", report_cmd.result)
 
+
+#Benefits - Audit trails, nice retry logic possible & not rerun everything, no tight coupling(queue, airflow plugging easier), parallel execution possible,
+# better testing
+
 #****************************************************************************************************
 #****************************************************************************************************
